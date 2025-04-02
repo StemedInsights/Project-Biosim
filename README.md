@@ -1,15 +1,20 @@
-## BioQuest Academy
+<h2> BioQuest Academy </h2>
 
-**blurb**
+<body>
+  <b> blurb </b> 
+  <p>
+    mockup
+  </p>
 
-mockup
+  <a href="url">AceAPBio</a>
 
-AceAPBio
+  <a href="url">AceIBO</a>
 
-AceIBO
+  <a href="url">Quizzes</a>
 
-Quizzes
-
-Contributors
+  <p>
+    Contributors
+  </p>
+</body>
 
 </footer>
