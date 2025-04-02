@@ -1,5 +1,5 @@
 <h2> BioQuest Academy </h2>
-
+<hr>
 <body>
   <b> blurb </b> 
   <hr>
@@ -17,5 +17,3 @@
     Contributors
   </p>
 </body>
-
-</footer>
