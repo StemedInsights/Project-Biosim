@@ -1,14 +1,26 @@
-## BioQuest Academy
+<header>
 
-**blurb**
+# BioQuest Academy
 
-mockup
+*Slogan maybe?*
+
+</header>
+
+### Services
+
+Blurb & mockups
+
+[AceAPBio]
+
+[AceIBO]
+
+[Quizzes]
+
+<footer>
+
+Visit our [official site](https://stemed-insights.framer.website/)
+
+---
 
 
-AceAPBio
-
-AceIBO
-
-Quizzes
-
-Contributors
+</footer>
