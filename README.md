@@ -2,9 +2,8 @@
 
 <body>
   <b> blurb </b> 
-  
+  <hr>
   <p>
-    
     mockup
   </p>
 
