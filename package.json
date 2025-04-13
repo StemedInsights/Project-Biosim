@@ -1,0 +1,30 @@
+{
+  "name": "project-biosim",
+  "version": "1.0.0",
+  "description": "Website/app used to study biology",
+  "homepage": "https://github.com/StemedInsights/Project-Biosim#readme",
+  "bugs": {
+    "url": "https://github.com/StemedInsights/Project-Biosim/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StemedInsights/Project-Biosim.git"
+  },
+  "license": "MIT",
+  "author": "StemEd Insights",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-async-handler": "^1.2.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.13.2",
+    "nodemon": "^3.1.9"
+  }
+}
