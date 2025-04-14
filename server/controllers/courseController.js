@@ -14,7 +14,7 @@ const createCourse = asyncHandler(async (req, res) => {
 
         const course = await Course.create(data);
         res.status(200).json(course);
-    } catch(err) {
+    } catch (err) {
         console.log(err);
         res.status(500).json({
             "code": 'course-create-failed',
@@ -29,9 +29,9 @@ const getCourses = asyncHandler(async (req, res) => {
 })
 
 const getCourseById = asyncHandler(async (request, response) => {
-    try{
+    try {
         const course = await Course.findById(request.params.id);
-        if(Utils.isEmptyOrNil(course)){
+        if (Utils.isEmptyOrNil(course)) {
             response.status(constants.NOT_FOUND).json({
                 "code": 'course-not-found',
                 "messages": ["Could not find course with given id: " + request.params.id]
@@ -40,7 +40,7 @@ const getCourseById = asyncHandler(async (request, response) => {
         }
 
         response.status(200).json(course);
-    }catch(err){
+    } catch (err) {
         console.log(err);
         response.status(500).json({
             "code": 'course-get-failed',
@@ -50,11 +50,11 @@ const getCourseById = asyncHandler(async (request, response) => {
 });
 
 const getCourseByService = asyncHandler(async (request, response) => {
-    try{
+    try {
         const query = { "service": request.params.service }
         const courses = await Course.find(query);
 
-        if(Utils.isEmptyOrNil(courses)){
+        if (Utils.isEmptyOrNil(courses)) {
             response.status(constants.NOT_FOUND).json({
                 "code": 'course-not-found',
                 "messages": ["Could not find course with given service: " + request.params.service]
@@ -63,7 +63,7 @@ const getCourseByService = asyncHandler(async (request, response) => {
         }
 
         response.status(200).json(courses);
-    }catch(err){
+    } catch (err) {
         console.log(err);
         response.status(500).json({
             "code": 'course-get-failed',
@@ -73,17 +73,17 @@ const getCourseByService = asyncHandler(async (request, response) => {
 });
 
 const updateCourseById = asyncHandler(async (request, response) => {
-    try{
+    try {
         const course = await Course.findById(request.params.id);
-        
-        if(Utils.isEmptyOrNil(course)){
+
+        if (Utils.isEmptyOrNil(course)) {
             response.status(404).json({
                 "code": 'course-not-found',
                 "messages": ["Could not find course with given id: " + request.params.id]
             });
             return;
         }
-        
+
         const updatedCourse = await Course.findByIdAndUpdate(
             request.params.id,
             request.body,
@@ -91,7 +91,7 @@ const updateCourseById = asyncHandler(async (request, response) => {
         );
 
         response.status(200).json(updatedCourse);
-    }catch(err){
+    } catch (err) {
         response.status(500).json({
             "code": 'user-update-failed',
             "messages": ['Internal Server Error: Unable to update course']
@@ -100,10 +100,10 @@ const updateCourseById = asyncHandler(async (request, response) => {
 })
 
 const deleteCourseById = asyncHandler(async (request, response) => {
-    try{
+    try {
         const course = await Course.findById(request.params.id);
-        
-        if(Utils.isEmptyOrNil(course)){
+
+        if (Utils.isEmptyOrNil(course)) {
             response.status(404).json({
                 "code": 'course-delete-failed',
                 "messages": ["Unable to find course with given id"]
@@ -113,7 +113,7 @@ const deleteCourseById = asyncHandler(async (request, response) => {
 
         await Course.deleteOne(course);
         response.status(200).json(course);
-    }catch(err){
+    } catch (err) {
         response.status(404).json({
             "code": 'course-delete-failed',
             "messages": ["Unable to find course with given id"]
