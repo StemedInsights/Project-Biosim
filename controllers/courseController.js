@@ -49,6 +49,29 @@ const getCourseById = asyncHandler(async (request, response) => {
     }
 });
 
+const getCourseByService = asyncHandler(async (request, response) => {
+    try{
+        const query = { "service": request.params.service }
+        const courses = await Course.find(query);
+
+        if(Utils.isEmptyOrNil(courses)){
+            response.status(constants.NOT_FOUND).json({
+                "code": 'course-not-found',
+                "messages": ["Could not find course with given service: " + request.params.service]
+            });
+            return;
+        }
+
+        response.status(200).json(courses);
+    }catch(err){
+        console.log(err);
+        response.status(500).json({
+            "code": 'course-get-failed',
+            "messages": ["Error getting course with given service: " + request.params.service]
+        });
+    }
+});
+
 const updateCourseById = asyncHandler(async (request, response) => {
     try{
         const course = await Course.findById(request.params.id);
@@ -102,6 +125,7 @@ module.exports = {
     createCourse,
     getCourses,
     getCourseById,
+    getCourseByService,
     updateCourseById,
     deleteCourseById
 }
