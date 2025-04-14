@@ -1,5 +1,27 @@
 const mongoose = require("mongoose");
 
+const questionSchema = mongoose.Schema({
+    prompt: {
+        type: String,
+        required: [true, "Please add the prompt"]
+    },
+    answers: {
+        type: Array,
+        required: [true, "Please add the answers"]
+    },
+    correctAnswerNumber: {
+        type: Number,
+        required: [true, "Please add the correct answer"]
+    }
+});
+
+const examSchema = mongoose.Schema({
+    questions: {
+        type: [[questionSchema]],
+        required: [true, "Please add the test questions"]
+    }
+});
+
 const courseSchema = mongoose.Schema({
     title: {
         type: String,
@@ -15,6 +37,9 @@ const courseSchema = mongoose.Schema({
     },
     courseIdentifier: {
         type: String
+    },
+    exam: {
+        type: [examSchema]
     }
 })
 

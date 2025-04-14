@@ -8,7 +8,8 @@ const createCourse = asyncHandler(async (req, res) => {
         let data = {
             "title": req.body.title,
             "content": req.body.content,
-            "service": req.body.service
+            "service": req.body.service,
+            "exam": req.body.exam
         }
 
         const course = await Course.create(data);
