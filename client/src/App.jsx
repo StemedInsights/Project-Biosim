@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Root structure with routing and components
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import AceAPBioPage from './pages/AceAPBioPage';
+import AceIBOPage from './pages/AceIBOPage';
+import QuizPage from './pages/QuizPage';
+import UnitPage from './pages/UnitPage';
+import IBOUnitPage from './pages/IBOUnitPage';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export default function App() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/ace-apbio" element={<AceAPBioPage />} />
+                <Route path="/ace-ibo" element={<AceIBOPage />} />
+                <Route path="/quiz" element={<QuizPage />} />
+                <Route path="/unit/:unitId" element={<UnitPage />} />
+                <Route path="/ibo-unit/:unitId" element={<IBOUnitPage />} />
+            </Routes>
+        </Router>
+    );
 }
-
-export default App
