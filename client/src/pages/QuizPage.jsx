@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UnitBox from '../components/UnitBox';
 
 const subjects = {
+    //TODO: Add description of sections
     apbio: {
         name: 'AP Biology',
         units: ['Chemistry of Life', 'Cell Structure', 'Cellular Energetics']
@@ -13,7 +14,7 @@ const subjects = {
     },
     semis: {
         name: 'IBO Semis',
-        units: ['Advanced Biochemistry']
+        units: ['Advanced Biochemistry', "Genetics", "Evolution"]
     }
 };
 
@@ -32,6 +33,7 @@ export default function QuizPage() {
     const [currentQIndex, setCurrentQIndex] = useState(0);
     const [showExplanation, setShowExplanation] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
+    const navigate = useNavigate();
 
     const toggleUnit = (unit) => {
         setSelectedUnits((prev) =>
@@ -44,95 +46,79 @@ export default function QuizPage() {
         setShowExplanation(true);
     };
 
+
     if (!subject) {
         return (
-            <div className="p-6 max-w-xl mx-auto">
-                <h2 className="text-2xl font-bold mb-4">Choose Subject</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {Object.entries(subjects).map(([key, val]) => (
-                        <button
-                            key={key}
-                            className="p-4 rounded bg-[#F8F8F8] hover:bg-[#E0E0E0] text-center"
-                            onClick={() => setSubject(key)}
-                        >
-                            {val.name}
-                        </button>
-                    ))}
-                </div>
-                <Link to="/" className="block mt-4 text-blue-500 underline text-center">
-                    &#x2190; Back to Homepage
-                </Link>
-            </div>
-        );
-    }
-
-    if (selectedUnits.length === 0 && subject) {
-        return (
-            <div className="min-h-screen bg-gray-100 py-12">
+            <div className="w-screen min-h-screen bg-white py-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h1 className="text-3xl font-bold text-gray-900 text-center">
-                        Select Units for Quiz
-                    </h1>
-                    <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {subjects[subject].units.map((unit, index) => (
-                            <UnitBox
-                                key={index}
-                                title={unit}
-                                selected={selectedUnits.includes(unit)}
-                                onToggle={() => toggleUnit(unit)}
-                            />
-                        ))}
+                    {/* Header */}
+                    <div className="text-center mb-12">
+                        <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                            Select Your Quiz
+                        </h1>
+                        <p className="mt-4 text-lg text-gray-700">
+                            Choose a subject to start your quiz.
+                        </p>
                     </div>
-                    <Link to="/" className="mt-6 block text-center text-[#FF826A] hover:underline">
-                        &#x2190; Back to Homepage
-                    </Link>
+
+                    {/* Subject Cards */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {Object.entries(subjects).map(([key, subject]) => (                                
+                            <div key={key} className="col-span-1 bg-gray-50 rounded-lg shadow-md overflow-hidden">
+                                <div className="p-6">
+                                    <h3 className="text-2xl font-semibold text-gray-900">{subject.name}</h3>
+                                    <p className="mt-2 text-gray-600">
+                                        {/* TODO: Add subject descriptions */}
+                                    </p>
+                                    {key === 'apbio' && (
+                                         <Link
+                                            to="/quiz-selection"
+                                            className="block mt-4 bg-white border-2 border-[#0F3C2F] text-[#0F3C2F] font-semibold rounded-full px-6 py-3 w-full text-center hover:bg-gray-100 hover:text-black"
+                                            state={{
+                                                title: subjects.apbio.name,
+                                                units: subjects.apbio.units
+                                            }}                                            >
+                                            Quiz
+                                        </Link>
+                                    )}
+                                    {key === 'opens' && (
+                                            <Link
+                                                to="/quiz-selection"
+                                                className="block mt-4 bg-white border-2 border-[#0F3C2F] text-[#0F3C2F] font-semibold rounded-full px-6 py-3 w-full text-center hover:bg-gray-100 hover:text-black"
+                                                state={{
+                                                    title: subjects.opens.name,
+                                                    units: subjects.opens.units
+                                                }}
+                                            >
+                                                Quiz
+                                            </Link>
+                                    )}
+                                    {key === 'semis' && (
+                                        <div className="mt-4 rounded-lg shadow bg-white">
+                                            <Link 
+                                                to="/quiz-selection"
+                                                className="block mt-4 bg-white border-2 border-[#0F3C2F] text-[#0F3C2F] font-semibold rounded-full px-6 py-3 w-full text-center hover:bg-gray-100 hover:text-black"
+                                                state={{ 
+                                                        title: subjects.semis.name,
+                                                        units: subjects.semis.units
+                                                    }
+                                                }>
+                                                 Quiz
+                                            </Link>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>))}
+                    </div>
+
+                    {/* Back to Homepage */}
+                    <div className="mt-12 text-center">
+                        <Link to="/" className="text-[#FF826A] hover:underline">
+                            &#x2190; Back to Homepage
+                        </Link>
+                    </div>
                 </div>
             </div>
         );
     }
-    
-    const currentQuestion = sampleQuestions[currentQIndex];
-    return (
-        <div className="min-h-screen bg-white py-12">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 className="text-3xl font-bold text-gray-900 text-center">Quiz: {subjects[subject].name}</h1>
-                <p className="mt-2 text-lg text-gray-700 text-center">Question {currentQIndex + 1} / {sampleQuestions.length}</p>
-                <div className="mt-8 bg-white shadow overflow-hidden sm:rounded-lg">
-                    <div className="px-4 py-5 sm:px-6">
-                        <h3 className="text-lg leading-6 font-medium text-gray-900">
-                            {currentQuestion.question}
-                        </h3>
-                    </div>
-                    <div className="border-t border-gray-200">
-                        <dl>
-                            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6">
-                {currentQuestion.options.map((option, idx) => (
-                    <button
-                        key={idx}
-                        className={`block w-full text-left p-2 mt-2 rounded border ${selectedOption === option ? 'bg-[#FF826A] text-white' : 'hover:bg-gray-100'}`}
-                        onClick={() => handleAnswer(option)}
-                        disabled={showExplanation}
-                    >
-                        {option}
-                                    </button>
-                                ))}
-                            </div>
-                            {showExplanation && (
-                                <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Explanation</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0">{currentQuestion.explanation}</dd>
-                                </div>
-                            )}
-                        </dl>
-                    </div>
-                </div>
-                <div className="mt-6 flex justify-between">
-                    <button onClick={() => setCurrentQIndex((prev) => (prev > 0 ? prev - 1 : sampleQuestions.length - 1))} className="px-4 py-2 bg-[#FF826A] text-white rounded hover:bg-[#E0E0E0] hover:text-black">Previous</button>
-                    <button onClick={() => setCurrentQIndex((prev) => (prev + 1) % sampleQuestions.length)} className="px-4 py-2 bg-[#FF826A] text-white rounded hover:bg-[#E0E0E0] hover:text-black">Next</button>
-                </div>
-                <Link to="/" className="mt-6 block text-center text-[#0F3C2F] hover:underline">
-                    &#x2190; Back to Homepage                </Link>
-            </div>
-        </div>
-    );
 }

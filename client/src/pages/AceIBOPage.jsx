@@ -56,7 +56,7 @@ export default function AceAPBioPage() {
     };
 
     return (
-        <div className="min-h-screen w-screen bg-white text-[#0F3C2F] font-sans px-6 py-12">
+        <div className="min-h-screen bg-white text-[#0F3C2F] font-sans px-6 py-12">
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center mb-8">
                     <Link to="/" className="inline-flex items-center text-gray-700 hover:text-black">
