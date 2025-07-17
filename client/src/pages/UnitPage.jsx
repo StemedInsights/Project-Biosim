@@ -1,11 +1,15 @@
 import { useParams, Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { apiRequest } from '../../utils';
+import parse from 'html-react-parser'
 
-const units = [
+const unitJSON = await apiRequest('service/ap-bio')
+
+let units = [
     {
         title: 'Unit 1: Chemistry of Life',
         topics: [
-            { name: 'Elements of Life', content: 'Content about elements essential to life.' },
+            { name: 'Structure of Water and Hydrogen Bonding', content: assignContent("1.1") },
             { name: 'Properties of Water', content: 'Details on cohesion, adhesion, and polarity.' },
             { name: 'Macromolecules', content: 'Information on carbs, lipids, proteins, and nucleic acids.' },
             { name: 'Nucleic Acids', content: 'How DNA and RNA store genetic information.' }
@@ -22,16 +26,36 @@ const units = [
     // Additional units...
 ];
 
+function assignContent(unit) {
+    let returnElement = 'No content available for this unit.'
+    unitJSON.forEach(element => {
+        console.log("Title", element.title)
+        if (element.title == unit) {
+            returnElement = element.content
+        }
+    });
+
+    return returnElement;
+}
+
 export default function UnitPage() {
     const { unitId } = useParams();
     const unitIndex = parseInt(unitId || '0');
     const unit = units[unitIndex] || units[0];
 
     const [activeTopicIndex, setActiveTopicIndex] = useState(0);
+    const [apiData, setApiData] = useState(null);
+
+    // Reset active topic when unit changes
+    useEffect(() => {
+        setActiveTopicIndex(0);
+        assignContent();
+    }, [unitIndex]);
+
     const activeTopic = unit.topics[activeTopicIndex];
 
     return (
-        <div className="h-screen w-screen bg-[#C4DCD5] text-[#0F3C2F] font-sans">
+        <div className="min-h-screen w-full bg-[#C4DCD5] text-[#0F3C2F] font-sans">
             <div className="container mx-auto p-8 ">
                 <Link to="/ace-apbio" className="mb-8 inline-flex items-center text-gray-700 hover:text-black">
                     ← Back to AP Bio Overview
@@ -52,14 +76,14 @@ export default function UnitPage() {
                                     >
                                         {topic.name}
                                     </button>
-                                </li>                                
+                                </li>
                             ))}
                         </ul>
                     </div>
 
                     <div className="flex-1 p-6 overflow-y-auto">
                         <h4 className="text-2xl font-bold mb-4">{activeTopic.name}</h4>
-                        <p className="text-lg text-gray-700 leading-relaxed">{activeTopic.content}</p>
+                        {parse(activeTopic.content)}
                     </div>
                 </div>
             </div>

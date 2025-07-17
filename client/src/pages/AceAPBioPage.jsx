@@ -5,7 +5,15 @@ const units = [
     {
         title: 'Unit 1: Chemistry of Life',
         description: 'Description of Unit Here',
-        topics: ['1.1: Lorem Ipsum', '1.2: Lorem Ipsum', '1.3: Lorem Ipsum', '1.4: Lorem Ipsum', '1.5: Lorem Ipsum', '1.6: Lorem Ipsum', '1.7: Lorem Ipsum', '1.8 Lorem Ipsum']
+        topics: [
+            '1.1: Structure of Water and Hydrogen Bonding', 
+            '1.2: Elements of Life', 
+            '1.3: Introduction to Macromolecules', 
+            '1.4: Carbohydrates', 
+            '1.5: Lipids', 
+            '1.6: Nucleic Acids',
+            '1.7: Proteins'
+        ]
     },
     {
         title: 'Unit 2: Cell Structure and Function',
