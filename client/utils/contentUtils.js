@@ -8,9 +8,12 @@ export async function apBioContent() {
             title: 'Unit 1: Chemistry of Life',
             topics: [
                 { name: 'Structure of Water and Hydrogen Bonding', content: assignContent("1.1", unitJSON) },
-                { name: 'Properties of Water', content: 'Details on cohesion, adhesion, and polarity.' },
-                { name: 'Macromolecules', content: 'Information on carbs, lipids, proteins, and nucleic acids.' },
-                { name: 'Nucleic Acids', content: 'How DNA and RNA store genetic information.' }
+                { name: 'Elements of Life',                        content: assignContent("1.2", unitJSON) },
+                { name: 'Introduction to Macromolecules',          content: assignContent("1.3", unitJSON) },
+                { name: 'Carbohydrates',                           content: assignContent("1.4", unitJSON) },
+                { name: 'Lipids',                                  content: assignContent("1.5", unitJSON) },
+                { name: 'Nucleic Acids',                           content: assignContent("1.6", unitJSON) },
+                { name: 'Proteins',                                content: assignContent("1.7", unitJSON) },
             ]
         },
         {
