@@ -19,12 +19,23 @@ export async function apBioContent() {
         {
             title: 'Unit 2: Cell Structure and Function',
             topics: [
-                { name: 'Cell Organelles', content: 'Functions of organelles like mitochondria and ER.' },
-                { name: 'Membrane Transport', content: 'Osmosis, diffusion, and active transport.' },
-                { name: 'Surface Area to Volume', content: 'Why cell size matters.' }
+                { name: 'Cell Structure and Function',             content: assignContent("2.1", unitJSON) },
+                { name: 'Cell Size',                               content: assignContent("2.2", unitJSON) },
+                { name: 'Plasma Membrane',                         content: assignContent("2.3", unitJSON) },
+                { name: 'Membrane Permeability',                   content: assignContent("2.4", unitJSON) },
+                { name: 'Membrane Transport',                      content: assignContent("2.5", unitJSON) },
+                { name: 'Facilitated Diffusion',                   content: assignContent("2.6", unitJSON) },
+                { name: 'Tonicity and Osmoregulation',             content: assignContent("2.7", unitJSON) },
+                { name: 'Mechanisms of Transport',                 content: assignContent("2.8", unitJSON) },
+                { name: 'Cell Compartmentalization',               content: assignContent("2.9", unitJSON) },
+                { name: 'Origins of Cell Compartmentalization',    content: assignContent("2.10", unitJSON) },
             ]
         },
-        // Additional units...
+        
+        /*
+            '2.9: Cell Compartmentalization',
+            '2.10: Origins of Cell Compartmentalization',
+        */
     ];
 
     return units
