@@ -62,13 +62,29 @@ export async function apBioContent() {
                 { name: 'Environmental Effects on Phenotype',        content: assignContent("5.5", unitJSON) },
             ]
         },
+        {
+            title: 'Unit 6: Gene Expression and Regulation',
+            topics: [
+                { name: 'Cell Structure and Function',               content: assignContent("6.1", unitJSON) },
+                { name: 'Cell Size',                                 content: assignContent("6.2", unitJSON) },
+                { name: 'Plasma Membrane',                           content: assignContent("6.3", unitJSON) },
+                { name: 'Membrane Permeability',                     content: assignContent("6.4", unitJSON) },
+                { name: 'Membrane Transport',                        content: assignContent("6.5", unitJSON) },
+                { name: 'Facilitated Diffusion',                     content: assignContent("6.6", unitJSON) },
+                { name: 'Tonicity and Osmoregulation',               content: assignContent("6.7", unitJSON) },
+                { name: 'Mechanisms of Transport',                   content: assignContent("6.8", unitJSON) },
+            ]
+        },
         
         /*
-            '5.1: Meiosis', 
-            '5.2: Meiosis and Genetic Diversity', 
-            '5.3: Mendelian Genetics', 
-            '5.4: Non-Mendelian Genetics', 
-            '5.5: Environmental Effects on Phenotype', 
+            '6.1: DNA and RNA Structure', 
+            '6.2: DNA Replication', 
+            '6.3: Transcription and RNA Processing', 
+            '6.4: Translation', 
+            '6.5: Regulation of Gene Expression', 
+            '6.6: Gene Expression and Cell Specialization', 
+            '6.7: Mutations', 
+            '6.8: Biotechnology',
         */
     ];
 

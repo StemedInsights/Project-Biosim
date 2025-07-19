@@ -64,13 +64,16 @@ export const apBioUnits = [
     },
     {
         title: 'Unit 6: Gene Expression and Regulation',
-        description: 'Description of Unit Here',
+        description: 'Delve into the mechanisms of gene expression and regulation.',
         topics: [
-            '6.1: Lorem Ipsum', 
-            '6.2: Lorem Ipsum', 
-            '6.3: Lorem Ipsum', 
-            '6.4: Lorem Ipsum', 
-            '6.5: Lorem Ipsum', 
+            '6.1: DNA and RNA Structure', 
+            '6.2: DNA Replication', 
+            '6.3: Transcription and RNA Processing', 
+            '6.4: Translation', 
+            '6.5: Regulation of Gene Expression', 
+            '6.6: Gene Expression and Cell Specialization', 
+            '6.7: Mutations', 
+            '6.8: Biotechnology',
         ]
     },
     {
