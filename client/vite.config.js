@@ -6,4 +6,5 @@ export default defineConfig({
         tailwindcss(),
         react()
     ],
+    base: "/Project-Biosim/",
 })
